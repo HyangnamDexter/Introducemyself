@@ -112,7 +112,7 @@ hugo --gc --minify --config hugo.toml,pages.json --theme template --themesDir th
 | Hugo | 빌드 도구 | 외부 도구 | <https://gohugo.io> | Apache License 2.0 |
 | Tailwind CSS, PostCSS, Autoprefixer | CSS 빌드 | 외부 도구 | npm | MIT License |
 | Font Awesome Free 6.4.0 | 아이콘(cdnjs) | 외부 자료 | <https://fontawesome.com> | Icons CC BY 4.0, Fonts SIL OFL 1.1, Code MIT |
-| Devicon | 기술 아이콘(jsDelivr) | 외부 자료 | <https://devicon.dev> | MIT License |
+| Devicon v2.16.0 SVG (Python, Git, GitHub, Hugo) | `site/static/images/icons/` (저장소에 포함) | 외부 자료 | <https://devicon.dev> | MIT License |
 | GSAP 3.13.0 | 애니메이션(cdnjs) | 외부 자료 | <https://gsap.com> | GSAP Standard License (무료 사용) |
 | Montserrat, Nunito Sans | 웹폰트(Google Fonts) | 외부 자료 | <https://fonts.google.com> | SIL Open Font License 1.1 |
 | 준비 스크립트 | `prepare_github_pages.py`, `.github/pages_build.py`, 워크플로 | 수업 제공 | 초급프로젝트 수업 | 수업 자료 |
