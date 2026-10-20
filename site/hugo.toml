@@ -1,59 +1,51 @@
-# CareerCanvas theme – example config
-# Copy sections into your site config.toml and replace placeholders.
-# For running the site, see the Portfolio repo README: https://github.com/felipecordero/felipecordero.github.io
+# Introducemyself 사이트 설정 (테마: CareerCanvas)
+# 개인 정보 항목은 "내 정보" 표시가 있는 곳만 수정하면 됩니다.
 
-baseURL = "https://yoursite.com"
-languageCode = "en-us"
-title = "Your Name"
+baseURL = "https://hyangnamdexter.github.io/Introducemyself/"
+title = ""
 
-defaultContentLanguage = "en"
+defaultContentLanguage = "ko"
 defaultContentLanguageInSubdir = false
 
 [languages]
-  [languages.en]
-    contentDir = "content/en"
-    languageName = "English"
+  [languages.ko]
+    contentDir = "content/ko"
+    label = "한국어"
+    locale = "ko-KR"
     weight = 1
-    [languages.en.params]
-      tagline = "First sentence. Second sentence cycles in the same block (wraps to ~2 lines)."
-      hero_description = "Short bio for the hero section."
-      hero_location = "City, Country"
-      collab_tags = ["Tag 1", "Tag 2", "Tag 3"]
-  # Add more [languages.xx] blocks for other languages (es, fr, etc.)
+    [languages.ko.params]
+      # 내 정보: 이름 아래 번갈아 나오는 문장 (마침표+공백으로 구분)
+      tagline = ""
+      # 내 정보: 상단 짧은 소개
+      hero_description = ""
+      # 내 정보: 지역 (비우면 표시하지 않음)
+      hero_location = ""
+      collab_tags = []
 
 [build]
   writeStats = true
 
 [params]
-  name = "Your Name"
-  email = "your@email.com"
-  profile_image = "/images/your-profile.jpg"
-  author = "Your Name"
-  og_image = "images/your-og.png"
-  description = "One-line site description for SEO."
-  linkedin_url = "https://linkedin.com/in/yourprofile"
-  linkedin_text = "linkedin.com/in/yourprofile"
-  github_url = "https://github.com/yourusername"
-  github_text = "github.com/yourusername"
+  # 내 정보: 이름
+  name = ""
+  firstName = ""
+  lastName = ""
+  # 내 정보: 공개 이메일 (비우면 표시하지 않음)
+  email = ""
+  # 내 정보: site/static/images/ 아래 파일 (앞에 / 를 붙이지 않음)
+  profile_image = ""
+  author = ""
+  description = ""
+  linkedin_url = ""
+  linkedin_text = ""
+  github_url = ""
+  github_text = ""
   calendly_url = ""
-  calendly_height = "700px"
-  copyright = "© 2025 | Your Name"
-  resume_url_en = "/files/your-cv-en.pdf"
-  resume_url_fr = "/files/your-cv-fr.pdf"
-  resume_label = "View CV"
-  sectionPagesMenu = "main"
+  resume_url = ""
+  copyright = ""
   formspreeendpoint = ""
   pexelsapikey = ""
-
-  [[params.social]]
-    icon = "linkedin-in"
-    url = "https://linkedin.com/in/yourprofile"
-  [[params.social]]
-    icon = "github"
-    url = "https://github.com/yourusername"
-  # [[params.social]]
-  #   icon = "calendly"
-  #   url = "https://calendly.com/yourlink"
+  social = []
 
 [taxonomies]
   tag = "tags"
@@ -65,17 +57,11 @@ defaultContentLanguageInSubdir = false
   [markup.highlight]
     style = "monokai"
 
-[server]
-  [[server.headers]]
-    for = "/**/*.css"
-    [server.headers.values]
-      Content-Type = "text/css"
-
 [security]
   [security.funcs]
     getenv = ['^HUGO_', '^CI$']
 
-# One palette is picked at random per page load. Each needs name, main_color, second_color, third_color (hex).
+# 페이지를 열 때마다 아래 색상 조합 중 하나가 무작위로 적용됩니다.
 [params.color_palettes]
   [[params.color_palettes.palette]]
     name = "professional"
@@ -98,6 +84,6 @@ defaultContentLanguageInSubdir = false
     second_color = "#0EA5E9"
     third_color = "#F97316"
 
-# Pexels hero backgrounds
+# pexelsapikey가 비어 있으면 사진 대신 테마의 그라데이션 배경을 사용합니다. (테마가 queries 값을 필수로 검사함)
 [params.pexels]
-  queries = ["long span bridges", "skyscrapers", "sky and clouds"]
+  queries = ["sky and clouds"]

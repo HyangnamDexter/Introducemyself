@@ -1,0 +1,85 @@
+# 테마 화면 문구의 한국어 번역 (theme: CareerCanvas)
+[contactFormLabel]
+other = "연락처"
+[contactFormLabelNameLabel]
+other = "이름"
+[contactFormLabelEmailLabel]
+other = "이메일"
+[contactFormLabelSubjectLabel]
+other = "제목"
+[contactFormLabelMessageLabel]
+other = "내용"
+[contactFormSendBtnLabel]
+other = "보내기"
+[sendMeAMessage]
+other = "메시지 보내기"
+[contactInformation]
+other = "연락 방법"
+[getInTouch]
+other = "연락하기"
+[learnMore]
+other = "자세히 보기"
+[aboutMe]
+other = "자기소개"
+[connectOnLinkedIn]
+other = "LinkedIn에서 보기"
+[quickFacts]
+other = "한눈에 보기"
+[more]
+other = "더 보기"
+[aboutName]
+other = "소개:"
+[relatedContent]
+other = "관련 글"
+[interests]
+other = "관심사"
+[languages]
+other = "사용 언어"
+[helloIm]
+other = "안녕하세요, 저는"
+[viewCV]
+other = "이력서 보기"
+[downloadResume]
+other = "이력서 내려받기"
+[keyAchievements]
+other = "주요 수행 내용"
+[demoImageAlt]
+other = "예시 이미지"
+[galleryNotFound]
+other = "갤러리 이미지를 찾을 수 없습니다:"
+[viewOnGithub]
+other = "GitHub에서 전체 코드 보기"
+[iframeIdRequired]
+other = "오류: iframe 단축코드에는 'id' 값이 필요합니다."
+[fullscreen]
+other = "전체 화면"
+[youtubePlayerTitle]
+other = "YouTube 동영상 플레이어"
+[vimeoPlayerTitle]
+other = "Vimeo 동영상 플레이어"
+[pageNotFound]
+other = "페이지를 찾을 수 없습니다"
+[pageNotFoundSubtitle]
+other = "요청한 주소의 페이지가 없습니다."
+[goHome]
+other = "홈으로 가기"
+[certainlyNotHere]
+other = "여기에는 없어요"
+[backToHome]
+other = "홈으로 돌아가기"
+[backToTop]
+other = "맨 위로"
+[openMenu]
+other = "메뉴 열기"
+[toggleDarkMode]
+other = "다크 모드 전환"
+[closeDialog]
+other = "닫기"
+[skipToContent]
+other = "본문으로 바로가기"
+[pauseAnimation]
+other = "움직임 멈추기"
+[playAnimation]
+other = "움직임 다시 켜기"
+[viewActivityDetail]
+other = "활동 자세히 보기"
