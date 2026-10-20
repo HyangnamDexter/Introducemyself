@@ -2,14 +2,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- 🔖 Dynamic title -->
-<title>
-  {{ if .IsHome }}
-    {{ .Site.Title }} | {{ .Site.Params.tagline }}
-  {{ else }}
-    {{ .Title }} | {{ .Site.Title }}
-  {{ end }}
-</title>
+<!-- 🔖 Dynamic title: "<이름> | 개인 소개" on home, "<페이지> | <이름>" elsewhere -->
+{{ $siteName := .Site.Params.name | default .Site.Title }}
+<title>{{ if .IsHome }}{{ $siteName }} | 개인 소개{{ else }}{{ .Title }} | {{ $siteName }}{{ end }}</title>
 
 <!-- ✅ Meta tags -->
 <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
@@ -33,7 +28,9 @@
 <meta name="twitter:image" content="{{ with .Params.og_image }}{{ . | absURL }}{{ else }}{{ with site.Params.og_image }}{{ . | absURL }}{{ end }}{{ end }}" />
 
 <!-- 🔧 Favicon -->
-<link rel="icon" href="/favicon.ico" />
+{{/* No favicon file: an empty data URI stops browsers requesting /favicon.ico
+     from the domain root, which is outside this project site. */}}
+<link rel="icon" href="data:," />
 
 <!-- Fonts & Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
