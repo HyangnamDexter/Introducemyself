@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{/* Render each home section only when its content page exists, so no empty
+     section shells (e.g. testimonials) are left on the page. */}}
+{{ partial "hero.html" . }}
+{{ with .Site.GetPage "about" }}{{ partial "about.html" $ }}{{ end }}
+{{ with .Site.GetPage "skills" }}{{ partial "skills.html" $ }}{{ end }}
+{{ with .Site.GetPage "experience" }}{{ partial "experience.html" $ }}{{ end }}
+{{ with .Site.GetPage "technical" }}{{ partial "technical.html" $ }}{{ end }}
+{{ with .Site.GetPage "testimonials" }}{{ partial "testimonials.html" $ }}{{ end }}
+{{ partial "contact.html" . }}
+{{ end }}
