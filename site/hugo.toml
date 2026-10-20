@@ -87,3 +87,26 @@ defaultContentLanguageInSubdir = false
 # pexelsapikey가 비어 있으면 사진 대신 테마의 그라데이션 배경을 사용합니다. (테마가 queries 값을 필수로 검사함)
 [params.pexels]
   queries = ["sky and clouds"]
+
+# 상단 메뉴: "#아이디"는 홈 화면의 섹션으로 이동합니다.
+[menus]
+  [[menus.main]]
+    name = "소개"
+    url = "#about"
+    weight = 1
+  [[menus.main]]
+    name = "역량"
+    url = "#skills"
+    weight = 2
+  [[menus.main]]
+    name = "활동"
+    url = "#experience"
+    weight = 3
+  [[menus.main]]
+    name = "기술"
+    url = "#technical"
+    weight = 4
+  [[menus.main]]
+    name = "연락처"
+    url = "#contact"
+    weight = 5
