@@ -7,23 +7,25 @@
           <p class="text-lg text-text-secondary dark:text-text-secondary leading-relaxed">
             {{ with .Site.GetPage "about" }}{{ .Params.intro | markdownify }}{{ end }}
           </p>
+          {{ with $.Site.Params.linkedin_url }}
           <div class="mt-6">
-            <a href="{{ $.Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-gradient-primary text-white px-4 py-2 rounded-lg shadow-lg about-button button-hover">
-              <i class="fab fa-linkedin-in mr-3 text-lg"></i> 
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-gradient-primary text-white px-4 py-2 rounded-lg shadow-lg about-button button-hover">
+              <i class="fab fa-linkedin-in mr-3 text-lg" aria-hidden="true"></i> 
               {{ i18n "connectOnLinkedIn" }}
             </a>
           </div>
+          {{ end }}
         </div>
       </div>
       <div class="flex-1">
         <div class="bg-gradient-to-br from-bg-secondary to-bg-tertiary dark:from-bg-secondary dark:to-bg-tertiary p-6 rounded-xl shadow-lg border border-border-primary dark:border-border-primary about-card card-hover">
         <div class="flex items-center justify-between mb-6 border-b border-border-primary dark:border-border-primary pb-3">
           <h3 class="text-xl font-semibold font-heading text-text-primary dark:text-text-primary flex items-center about-text-element">
-            <i class="fas fa-info-circle mr-3 text-primary dark:text-white"></i>
+            <i class="fas fa-info-circle mr-3 text-primary dark:text-white" aria-hidden="true"></i>
             {{ i18n "quickFacts" }}
           </h3>
-          <button id="aboutModalBtn" class="bg-gradient-primary text-white px-6 py-2 rounded-lg shadow-lg font-semibold flex items-center about-button text-sm button-hover">
-            <i class="fas fa-book-open mr-2"></i>
+          <button type="button" id="aboutModalBtn" aria-haspopup="dialog" aria-controls="aboutModal" class="bg-gradient-primary text-white px-6 py-2 rounded-lg shadow-lg font-semibold flex items-center about-button text-sm button-hover">
+            <i class="fas fa-book-open mr-2" aria-hidden="true"></i>
             {{ i18n "more" }}
           </button>
         </div>
@@ -31,7 +33,7 @@
           {{ with .Site.GetPage "about" }}
             {{ range $index, $fact := .Params.quickfacts }}
               <div class="flex items-start quick-fact-card about-text-element py-2 px-4 rounded-xl">
-                <i class="fas fa-{{ $fact.icon }} text-primary dark:text-white text-lg mr-3"></i>
+                <i class="fas fa-{{ $fact.icon }} text-primary dark:text-white text-lg mr-3" aria-hidden="true"></i>
                 <div class="flex-1">
                   <h4 class="font-bold text-gray-900 dark:text-text-primary mb-1 text-lg">{{ $fact.title }}</h4>
                   {{ $titleLower := lower $fact.title }}
@@ -64,30 +66,32 @@
 
   <!-- About Modal -->
   {{ with .Site.GetPage "about" }}
-  <div id="aboutModal" class="fixed inset-0 bg-bg bg-opacity-50 z-50 hidden items-center justify-center px-4 py-16">
+  <div id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" class="fixed inset-0 bg-bg bg-opacity-50 z-50 hidden items-center justify-center px-4 py-16">
     <div class="bg-bg dark:bg-bg rounded-xl shadow-2xl w-full max-w-5xl lg:max-w-6xl max-h-[70vh] lg:max-h-[80vh] overflow-y-auto sidebar-scroll">
       <div class="p-8">
         <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-bold text-text-primary dark:text-text-primary">{{ i18n "aboutName" }} {{ .Site.Params.name }}</h3>
-          <button id="closeAboutModal" class="text-text-muted text-text-secondary dark:text-text-muted text-2xl font-bold">
-            <i class="fas fa-times"></i>
+          <h3 id="aboutModalTitle" class="text-2xl font-bold text-text-primary dark:text-text-primary">{{ i18n "aboutName" }} {{ .Site.Params.name }}</h3>
+          <button type="button" id="closeAboutModal" aria-label="{{ i18n "closeDialog" }}" class="text-text-muted text-text-secondary dark:text-text-muted text-2xl font-bold p-2">
+            <i class="fas fa-times" aria-hidden="true"></i>
           </button>
         </div>
         
         <div class="space-y-6 text-text-secondary dark:text-text-secondary">
           <p class="text-lg leading-relaxed">{{ .Params.intro | markdownify }}</p>
-          <p class="text-lg leading-relaxed">{{ .Params.study | markdownify }}</p>
+          {{ with .Params.study }}<p class="text-lg leading-relaxed">{{ . | markdownify }}</p>{{ end }}
 
+          {{ if .Params.passion_text }}
           <div class="bg-gradient-primary-lighter p-6 rounded-xl border border-primary-light">
             <h4 class="text-xl font-semibold mb-3 text-primary-dark flex items-center">
-              <i class="fas fa-heart mr-3 text-second"></i>
+              <i class="fas fa-heart mr-3 text-second" aria-hidden="true"></i>
               {{ .Params.passion_title }}
             </h4>
             <p class="text-primary-dark leading-relaxed">{{ .Params.passion_text | markdownify }}</p>
           </div>
+          {{ end }}
 
-          <p class="text-lg leading-relaxed">{{ .Params.mix | markdownify }}</p>
-          <p class="text-lg leading-relaxed">{{ .Params.personal | markdownify }}</p>
+          {{ with .Params.mix }}<p class="text-lg leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+          {{ with .Params.personal }}<p class="text-lg leading-relaxed">{{ . | markdownify }}</p>{{ end }}
         </div>
       </div>
     </div>
@@ -100,37 +104,47 @@ document.addEventListener('DOMContentLoaded', function() {
   const modal = document.getElementById('aboutModal');
   const modalBtn = document.getElementById('aboutModalBtn');
   const closeBtn = document.getElementById('closeAboutModal');
+  // The about page is optional; the theme script crashed when it was missing.
+  if (!modal || !modalBtn || !closeBtn) return;
 
-  // Open modal
-  modalBtn.addEventListener('click', function() {
+  function focusable() {
+    return Array.from(modal.querySelectorAll('a[href], button, [tabindex]:not([tabindex="-1"])'));
+  }
+
+  function openModal() {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
-  });
+    closeBtn.focus();
+  }
 
-  // Close modal
   function closeModal() {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
     document.body.style.overflow = 'auto';
+    modalBtn.focus();
   }
 
+  modalBtn.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
 
   // Close modal when clicking outside
   modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      closeModal();
-    }
+    if (e.target === modal) closeModal();
   });
 
-  // Close modal with Escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
       closeModal();
+    } else if (e.key === 'Tab') {
+      // Keep Tab inside the open dialog; Escape or the close button leaves it.
+      const items = focusable();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
 });
 </script>
-
-  
