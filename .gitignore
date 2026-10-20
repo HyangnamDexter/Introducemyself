@@ -12,3 +12,6 @@ static/
 **/resources/_gen/
 **/.hugo_build.lock
 /.github-pages-setup-backups/
+# Hugo writeStats output and local build output
+**/hugo_stats.json
+/site/public/
