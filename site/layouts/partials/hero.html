@@ -6,28 +6,35 @@
         <div class="relative">
           <div class="hero-profile-ring relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-primary p-1 shadow-2xl">
             <div class="w-full h-full rounded-full overflow-hidden bg-white">
+              {{ with .Site.Params.profile_image }}
               <img 
-                src="{{ .Site.Params.profile_image }}" 
-                alt="Portrait of {{ .Site.Params.name }}" 
-                loading="lazy" 
+                src="{{ . | relURL }}" 
+                alt="{{ $.Site.Params.profile_alt | default (printf "%s 프로필 사진" $.Site.Params.name) }}" 
                 decoding="async" 
                 class="object-cover w-full h-full rounded-full"
               />
+              {{ else }}
+              <div class="w-full h-full rounded-full flex items-center justify-center bg-gradient-primary text-white text-7xl font-heading font-bold" role="img" aria-label="{{ $.Site.Params.name }} 아바타">
+                <span aria-hidden="true">{{ substr ($.Site.Params.name | default "?") 0 1 }}</span>
+              </div>
+              {{ end }}
             </div>
             <!-- Anchored to the ring so it stays aligned when lg size is set in CSS -->
+            {{ with .Site.Params.hero_location }}
             <div class="absolute -bottom-4 -right-4 z-10" data-animation="location-badge">
               <div class="hero-location-badge-scale">
                 <div class="flex items-center bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full shadow-xl border border-white/20 min-w-fit whitespace-nowrap">
-                  <i class="fas fa-map-marker-alt mr-2 text-primary-light flex-shrink-0"></i>
-                  <span class="font-semibold text-sm">{{ .Site.Params.hero_location }}</span>
+                  <i class="fas fa-map-marker-alt mr-2 text-primary-light flex-shrink-0" aria-hidden="true"></i>
+                  <span class="font-semibold text-sm"><span class="sr-only">지역: </span>{{ . }}</span>
                 </div>
               </div>
             </div>
+            {{ end }}
           </div>
         </div>
       </div>
       <!-- Right content -->
-      <div class="text-center lg:text-left mt-8 md:mt-0" style="width: 100%; max-width: 600px; min-width: 300px;">
+      <div class="text-center lg:text-left mt-8 md:mt-0" style="width: 100%; max-width: 600px;">
         <!-- Greeting -->
         <div class="mb-4 mt-4 md:mt-0 hero-text-element" data-animation="greeting">
           <span class="hero-text-accent font-medium text-lg block">{{ i18n "helloIm" }}</span>
@@ -50,24 +57,34 @@
           <a href="#contact" class="bg-bg text-primary dark:text-white px-8 py-4 rounded-lg font-semibold hero-button button-hover">
             {{ i18n "getInTouch" }}
           </a>
-          <a href="{{ .Site.Params.resume_url }}" target="_blank" rel="noopener" class="bg-bg text-primary dark:text-white px-8 py-4 rounded-lg font-semibold hero-button button-hover">
+          {{ with .Site.Params.resume_url }}
+          <a href="{{ . | relURL }}" target="_blank" rel="noopener" class="bg-bg text-primary dark:text-white px-8 py-4 rounded-lg font-semibold hero-button button-hover">
             {{ i18n "viewCV" }}
           </a>
+          {{ end }}
+          {{ with $.Site.Params.activity_url }}
+          <a href="{{ . | relURL }}" class="bg-bg text-primary dark:text-white px-8 py-4 rounded-lg font-semibold hero-button button-hover">
+            {{ i18n "viewActivityDetail" }}
+          </a>
+          {{ end }}
         </div>
         <!-- Social links -->
+        {{ with .Site.Params.social }}
         <div class="flex justify-center lg:justify-end mt-8 mb-8 md:mb-0 hero-text-element" data-animation="social">
           <div class="flex space-x-4 px-4 py-3 rounded-lg" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px);">
-            {{ range .Site.Params.social }}
-            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="text-white transition-transform duration-300 hover:scale-125">
-              <i class="fab fa-{{ .icon }} text-3xl"></i>
+            {{ range . }}
+            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="text-white transition-transform duration-300 hover:scale-125" aria-label="{{ .label | default .icon }} (새 창)">
+              <i class="fab fa-{{ .icon }} text-3xl" aria-hidden="true"></i>
             </a>
             {{ end }}
           </div>
         </div>
+        {{ end }}
       </div>
     </div>
   </div>
 
+  {{ if .Site.Params.pexelsapikey }}
   <a
     id="pexels-credit"
     class="pexels-credit"
@@ -76,5 +93,6 @@
     target="_blank"
     rel="noopener noreferrer"
   >Photo / Pexels</a>
+  {{ end }}
 </section>
   
