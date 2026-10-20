@@ -1,115 +1,55 @@
-<nav class="fixed w-full bg-bg dark:bg-bg shadow-md z-50" role="banner">
+  {{/* Site override of the theme nav: single language (ko), native anchor links,
+       accessible names for icon-only controls and a motion pause button. */}}
+  {{ $brand := trim (printf "%s %s" (.Site.Params.firstName | default "") (.Site.Params.lastName | default "")) " " }}
+  {{ if not $brand }}{{ $brand = .Site.Params.name | default .Site.Title }}{{ end }}
+  <nav class="fixed w-full bg-bg dark:bg-bg shadow-md z-50" aria-label="주요 메뉴">
   <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
     <div class="flex justify-between h-16">
-      <div class="flex items-center">
-        <a href="{{ .Site.Home.RelPermalink }}" class="text-3xl font-bold text-text-primary dark:text-text-primary font-heading">{{ .Site.Params.firstName }} {{ .Site.Params.lastName }}</a>
+      <div class="flex items-center min-w-0">
+        <a href="{{ .Site.Home.RelPermalink }}" class="text-2xl sm:text-3xl font-bold text-text-primary dark:text-text-primary font-heading truncate">{{ $brand }}</a>
       </div>
       <div class="hidden lg:flex items-center space-x-6">
         {{ range .Site.Menus.main }}
-          {{ if .HasChildren }}
-          <div class="relative group">
-            <a href="{{ .URL | relLangURL }}" class="nav-link text-text-primary dark:text-text-primary flex items-center">
-              {{ .Pre | safeHTML }}{{ .Name }}
-              <i class="fas fa-chevron-down ml-2 text-sm"></i>
-            </a>
-            <div class="submenu absolute left-0 top-full mt-2 bg-bg dark:bg-bg shadow-lg rounded-lg z-50 min-w-[10rem] opacity-0 invisible">
-              {{ range .Children }}
-                <a href="{{ .URL | relLangURL }}" class="nav-link block px-4 py-2 text-sm text-text-primary dark:text-text-primary">
-                  {{ .Name }}
-                </a>
-              {{ end }}
-            </div>
-          </div>
+          {{ if hasPrefix .URL "#" }}
+            <a href="{{ printf "%s%s" $.Site.Home.RelPermalink .URL }}" class="nav-link section-link text-text-primary dark:text-text-primary">{{ .Name }}</a>
           {{ else }}
-                      {{ if hasPrefix .URL "#" }}
-            <!-- Section links that should scroll on home page or navigate to home on other pages -->
-            <a href="{{ printf "%s%s" $.Site.Home.RelPermalink .URL }}" class="nav-link section-link text-text-primary dark:text-text-primary" data-section="{{ .URL }}">{{ .Name }}</a>
-          {{ else }}
-            <!-- Regular page links -->
             <a href="{{ .URL | relLangURL }}" class="nav-link text-text-primary dark:text-text-primary">{{ .Name }}</a>
           {{ end }}
-          {{ end }}
-        {{ end }}
-        <!-- Language Switcher (Dropdown) -->
-        {{ $homes := $.Site.Home.AllTranslations }}
-        {{ if gt (len $homes) 1 }}
-        {{/* Determine current language flag */}}
-        {{ $cur := $.Site.Language.Lang }}
-        {{ $currentFlag := "🏳️" }}
-        {{ if eq $cur "en" }}{{ $currentFlag = "🇬🇧" }}{{ end }}
-        {{ if eq $cur "es" }}{{ $currentFlag = "🇨🇱" }}{{ end }}
-        {{ if eq $cur "fr" }}{{ $currentFlag = "🇫🇷" }}{{ end }}
-        {{ if eq $cur "bg" }}{{ $currentFlag = "🇧🇬" }}{{ end }}
-        <div class="relative group">
-          <a href="#" class="nav-link text-text-primary dark:text-text-primary flex items-center" aria-label="Language switcher">
-            <span class="text-lg mr-1">{{ $currentFlag }}</span>
-            <i class="fas fa-chevron-down ml-1 text-sm"></i>
-          </a>
-          <div class="submenu absolute right-0 top-full mt-2 bg-bg dark:bg-bg shadow-lg rounded-lg z-50 min-w-[8rem] opacity-0 invisible">
-            {{ $order := slice "fr" "en" "es" "bg" }}
-            {{ range $order }}
-              {{ $code := . }}
-              {{ range where $homes "Language.Lang" $code }}
-                {{ $lang := .Language.Lang }}
-                {{ $flag := "🏳️" }}
-                {{ if eq $lang "fr" }}{{ $flag = "🇫🇷" }}{{ end }}
-                {{ if eq $lang "en" }}{{ $flag = "🇬🇧" }}{{ end }}
-                {{ if eq $lang "es" }}{{ $flag = "🇨🇱" }}{{ end }}
-                {{ if eq $lang "bg" }}{{ $flag = "🇧🇬" }}{{ end }}
-                {{/* Check if current page has a translation in this language */}}
-                {{ $targetURL := .RelPermalink }}
-                {{ $hasTranslation := false }}
-                {{ if $.Page.IsTranslated }}
-                  {{ range $.Page.Translations }}
-                    {{ if eq .Language.Lang $lang }}
-                      {{ $targetURL = .RelPermalink }}
-                      {{ $hasTranslation = true }}
-                    {{ end }}
-                  {{ end }}
-                {{ end }}
-                
-                <a href="{{ $targetURL }}" class="nav-link block px-4 py-2 text-sm text-text-primary dark:text-text-primary {{ if eq .Language.Lang $.Site.Language.Lang }}font-semibold{{ end }}">
-                  <span class="mr-2">{{ $flag }}</span>{{ .Language.LanguageName }}
-                </a>
-              {{ end }}
-            {{ end }}
-          </div>
-        </div>
         {{ end }}
 
         <!-- Social Media Icons -->
-        <div class="flex items-center space-x-4" data-animation="social">
+        <div class="flex items-center space-x-4">
           {{ if .Site.Params.linkedin_url }}
-          <a href="{{ .Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125">
-            <i class="fab fa-linkedin-in text-xl"></i>
+          <a href="{{ .Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125" aria-label="LinkedIn (새 창)">
+            <i class="fab fa-linkedin-in text-xl" aria-hidden="true"></i>
           </a>
           {{ end }}
           {{ if .Site.Params.github_url }}
-          <a href="{{ .Site.Params.github_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125">
-            <i class="fab fa-github text-xl"></i>
-          </a>
-          {{ end }}
-          {{ $calendlyIcon := resources.Get "images/calendly-icon.svg" }}
-          {{ if and .Site.Params.calendly_url $calendlyIcon }}
-          <a href="{{ .Site.Params.calendly_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125" aria-label="Book a meeting on Calendly">
-            <img src="{{ $calendlyIcon.RelPermalink }}" alt="" class="w-6 h-6" width="24" height="24">
+          <a href="{{ .Site.Params.github_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125" aria-label="GitHub (새 창)">
+            <i class="fab fa-github text-xl" aria-hidden="true"></i>
           </a>
           {{ end }}
         </div>
+        <!-- Motion pause -->
+        <button type="button" class="motion-toggle text-text-primary dark:text-text-primary p-1" aria-pressed="false" data-label-pause="{{ i18n "pauseAnimation" }}" data-label-play="{{ i18n "playAnimation" }}" aria-label="{{ i18n "pauseAnimation" }}" title="{{ i18n "pauseAnimation" }}">
+          <i class="fas fa-pause" aria-hidden="true"></i>
+        </button>
         <!-- Dark Mode Toggle -->
-        <button id="darkModeToggle" class="text-text-primary dark:text-text-primary focus:outline-none">
-          <i class="fas fa-toggle-on dark:hidden"></i>
-          <i class="fas fa-toggle-off hidden dark:block"></i>
+        <button type="button" id="darkModeToggle" class="text-text-primary dark:text-text-primary p-1" aria-label="{{ i18n "toggleDarkMode" }}" title="{{ i18n "toggleDarkMode" }}">
+          <i class="fas fa-toggle-on dark:hidden" aria-hidden="true"></i>
+          <i class="fas fa-toggle-off hidden dark:block" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="lg:hidden flex items-center space-x-4">
-        <!-- Dark Mode Toggle Mobile -->
-        <button id="darkModeToggleMobile" class="text-text-primary dark:text-text-primary focus:outline-none">
-          <i class="fas fa-toggle-on dark:hidden"></i>
-          <i class="fas fa-toggle-off hidden dark:block"></i>
+      <div class="lg:hidden flex items-center space-x-2">
+        <button type="button" class="motion-toggle text-text-primary dark:text-text-primary p-2" aria-pressed="false" data-label-pause="{{ i18n "pauseAnimation" }}" data-label-play="{{ i18n "playAnimation" }}" aria-label="{{ i18n "pauseAnimation" }}" title="{{ i18n "pauseAnimation" }}">
+          <i class="fas fa-pause" aria-hidden="true"></i>
         </button>
-        <button id="menu-btn" class="text-text-primary dark:text-text-primary">
-          <i class="fas fa-bars text-2xl"></i>
+        <button type="button" id="darkModeToggleMobile" class="text-text-primary dark:text-text-primary p-2" aria-label="{{ i18n "toggleDarkMode" }}" title="{{ i18n "toggleDarkMode" }}">
+          <i class="fas fa-toggle-on dark:hidden" aria-hidden="true"></i>
+          <i class="fas fa-toggle-off hidden dark:block" aria-hidden="true"></i>
+        </button>
+        <button type="button" id="menu-btn" class="text-text-primary dark:text-text-primary p-2" aria-label="{{ i18n "openMenu" }}" aria-expanded="false" aria-controls="mobile-menu">
+          <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
         </button>
       </div>
     </div>
@@ -120,208 +60,67 @@
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       {{ range .Site.Menus.main }}
         {{ if hasPrefix .URL "#" }}
-          <!-- Section links that should scroll on home page or navigate to home on other pages -->
-          <a href="{{ printf "%s%s" $.Site.Home.RelPermalink .URL }}" class="nav-link section-link block px-3 py-2 rounded-md text-base font-medium text-text-primary dark:text-text-primary" data-section="{{ .URL }}">
+          <a href="{{ printf "%s%s" $.Site.Home.RelPermalink .URL }}" class="nav-link section-link block px-3 py-3 rounded-md text-base font-medium text-text-primary dark:text-text-primary">
             {{ .Name }}
           </a>
         {{ else }}
-          <!-- Regular page links -->
-          <a href="{{ .URL | relLangURL }}" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-text-primary dark:text-text-primary">
+          <a href="{{ .URL | relLangURL }}" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-text-primary dark:text-text-primary">
             {{ .Name }}
           </a>
         {{ end }}
-        {{ if .HasChildren }}
-          {{ range .Children }}
-            <a href="{{ .URL | relLangURL }}" class="block pl-6 py-1 text-sm text-text-tertiary dark:text-text-tertiary">{{ .Name }}</a>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-      <!-- Mobile Language Switcher (Inline flags) -->
-      {{ $homes := $.Site.Home.AllTranslations }}
-      {{ if gt (len $homes) 1 }}
-      <div class="px-3 py-2 border-t border-border-primary dark:border-border-primary">
-        <div class="flex items-center space-x-3">
-          {{ $order := slice "fr" "en" "es" "bg" }}
-          {{ range $order }}
-            {{ $code := . }}
-            {{ range where $homes "Language.Lang" $code }}
-              {{ $lang := .Language.Lang }}
-              {{ $flag := "🏳️" }}
-              {{ if eq $lang "fr" }}{{ $flag = "🇫🇷" }}{{ end }}
-              {{ if eq $lang "en" }}{{ $flag = "🇬🇧" }}{{ end }}
-              {{ if eq $lang "es" }}{{ $flag = "🇨🇱" }}{{ end }}
-              {{ if eq $lang "bg" }}{{ $flag = "🇧🇬" }}{{ end }}
-
-              {{/* Check if current page has a translation in this language */}}
-              {{ $targetURL := .RelPermalink }}
-              {{ $hasTranslation := false }}
-              {{ if $.Page.IsTranslated }}
-                {{ range $.Page.Translations }}
-                  {{ if eq .Language.Lang $lang }}
-                    {{ $targetURL = .RelPermalink }}
-                    {{ $hasTranslation = true }}
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-              
-              <a href="{{ $targetURL }}" class="px-2 py-1 text-xl {{ if eq .Language.Lang $.Site.Language.Lang }}opacity-100 font-semibold{{ else }}opacity-70 hover:opacity-100{{ end }}" aria-label="Switch to {{ .Language.LanguageName }}{{ if $hasTranslation }} (has translation){{ else }} (go to home){{ end }}">
-                <span aria-hidden="true">{{ $flag }}</span>
-              </a>
-            {{ end }}
-          {{ end }}
-        </div>
-      </div>
       {{ end }}
 
       <!-- Mobile Social Media Icons -->
-      <div class="flex items-center space-x-6 px-3 py-3 border-t border-border-primary dark:border-border-primary mt-2" data-animation="social">
+      <div class="flex items-center space-x-6 px-3 py-3 border-t border-border-primary dark:border-border-primary mt-2">
         {{ if .Site.Params.linkedin_url }}
-        <a href="{{ .Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125">
-          <i class="fab fa-linkedin-in text-2xl"></i>
+        <a href="{{ .Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary p-1" aria-label="LinkedIn (새 창)">
+          <i class="fab fa-linkedin-in text-2xl" aria-hidden="true"></i>
         </a>
         {{ end }}
         {{ if .Site.Params.github_url }}
-        <a href="{{ .Site.Params.github_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125">
-          <i class="fab fa-github text-2xl"></i>
-        </a>
-        {{ end }}
-        {{ $calendlyIcon := resources.Get "images/calendly-icon.svg" }}
-        {{ if and .Site.Params.calendly_url $calendlyIcon }}
-        <a href="{{ .Site.Params.calendly_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary transition-transform duration-300 hover:scale-125" aria-label="Book a meeting on Calendly">
-          <img src="{{ $calendlyIcon.RelPermalink }}" alt="" class="w-7 h-7" width="28" height="28">
+        <a href="{{ .Site.Params.github_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary p-1" aria-label="GitHub (새 창)">
+          <i class="fab fa-github text-2xl" aria-hidden="true"></i>
         </a>
         {{ end }}
       </div>
     </div>
   </div>
 
-  <!-- Additional styles -->
-  <style>
-    .group.open .submenu {
-      opacity: 1 !important;
-      visibility: visible !important;
-    }
-  </style>
-
-  <!-- JavaScript to manage submenu toggle, dark mode, and intelligent navigation -->
   <script>
-    // Intelligent navigation for section links
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Navigation script loaded');
-      
-      const sectionLinks = document.querySelectorAll('.section-link');
-      console.log('Found section links:', sectionLinks.length);
-      const homePath = '{{ .Site.Home.RelPermalink }}';
-      
-      sectionLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          console.log('Section link clicked:', this.getAttribute('data-section'));
-          
-          const section = this.getAttribute('data-section');
-          const isHomePage = window.location.pathname === homePath || window.location.pathname === homePath + 'index.html' || window.location.pathname === homePath.replace(/\/$/, '');
-          console.log('Is home page:', isHomePage);
-          
-          if (isHomePage) {
-            // On home page, scroll to section
-            const targetElement = document.querySelector(section);
-            console.log('Target element found:', !!targetElement);
-            if (targetElement) {
-              targetElement.scrollIntoView({
-                behavior: 'instant',
-                block: 'start'
-              });
-            }
-          } else {
-            // On other pages, navigate to home page with section
-            console.log('Navigating to:', homePath + section);
-            window.location.href = homePath + section;
-          }
-        });
-      });
-      
-      // Handle hash fragments when page loads
-      function handleHashScroll() {
-        console.log('Checking for hash:', window.location.hash);
-        if (window.location.hash) {
-          const targetElement = document.querySelector(window.location.hash);
-          console.log('Hash target element found:', !!targetElement);
-          if (targetElement) {
-            // Small delay to ensure page is fully loaded
-            setTimeout(() => {
-              console.log('Scrolling to hash target');
-              targetElement.scrollIntoView({
-                behavior: 'instant',
-                block: 'start'
-              });
-            }, 100);
-          }
-        }
-      }
-      
-      // Handle hash on page load
-      handleHashScroll();
-      
-      // Also try after a longer delay in case page is still loading
-      setTimeout(handleHashScroll, 500);
-      setTimeout(handleHashScroll, 1000);
-      
-      // Handle hash changes (for browser back/forward)
-      window.addEventListener('hashchange', function() {
-        console.log('Hash changed to:', window.location.hash);
-        handleHashScroll();
-      });
-      
-      // Fallback: check for hash on window load as well
-      window.addEventListener('load', function() {
-        console.log('Window loaded, checking hash');
-        setTimeout(handleHashScroll, 200);
-      });
-    });
-    
-    // Submenu toggle (desktop + mobile button triggers)
-    document.querySelectorAll('.group > a.nav-link, .group > button.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const group = this.closest('.group');
-        const isOpen = group.classList.contains('open');
-
-        // Close all other submenus
-        document.querySelectorAll('.group').forEach(g => g.classList.remove('open'));
-
-        // Toggle current submenu
-        if (!isOpen) {
-          group.classList.add('open');
-        }
-      });
-
-      document.addEventListener('click', function(event) {
-        const group = link.closest('.group');
-        if (!group.contains(event.target)) {
-          group.classList.remove('open');
-        }
-      });
-    });
+    // Section links are plain anchors (/Introducemyself/#about), so the browser
+    // scrolls, updates the URL and keeps back/forward history by itself.
 
     // Dark mode toggle
     function toggleDarkMode() {
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('darkMode', isDark);
     }
-
     document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
     document.getElementById('darkModeToggleMobile').addEventListener('click', toggleDarkMode);
 
-    // Close mobile menu when clicking menu items (language trigger is a button, so ignored)
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        document.getElementById('mobile-menu').classList.add('hidden');
+    (function () {
+      const menu = document.getElementById('mobile-menu');
+      const menuBtn = document.getElementById('menu-btn');
+
+      // The theme's scripts.js toggles the "hidden" class; keep aria-expanded in sync.
+      new MutationObserver(function () {
+        menuBtn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
+      }).observe(menu, { attributes: true, attributeFilter: ['class'] });
+
+      // Close the mobile menu after choosing an item
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.add('hidden');
+        });
       });
-    });
 
-
+      // Escape closes the open mobile menu and returns focus to its button
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+          menu.classList.add('hidden');
+          menuBtn.focus();
+        }
+      });
+    })();
   </script>
 </nav>
-
-
-
