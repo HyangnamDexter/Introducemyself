@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{/* Site override: simple, accessible list of activity pages with a way back
+     home. The theme list layout was built for blog/engineering sections. */}}
+<section class="pt-8 pb-12 bg-bg dark:bg-bg">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav aria-label="현재 위치" class="mb-6 text-sm">
+      <a href="{{ .Site.Home.RelPermalink }}" class="underline underline-offset-4 text-text-primary">홈</a>
+      <span aria-hidden="true" class="mx-2 text-text-muted">›</span>
+      <span aria-current="page" class="text-text-secondary">{{ .Title }}</span>
+    </nav>
+    <h1 class="text-3xl font-bold mb-8 font-heading text-text-primary dark:text-text-primary">{{ .Title }}</h1>
+    <ul class="space-y-4">
+      {{ range .Pages.ByWeight }}
+      <li class="bg-bg-secondary dark:bg-bg-tertiary rounded-lg p-5 border border-border-primary">
+        <h2 class="text-xl font-semibold mb-2"><a href="{{ .RelPermalink }}" class="text-text-primary underline underline-offset-4 break-words">{{ .Title }}</a></h2>
+        {{ with .Description }}<p class="text-text-secondary">{{ . }}</p>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    <p class="mt-10"><a href="{{ .Site.Home.RelPermalink }}" class="underline underline-offset-4 text-text-primary"><i class="fas fa-home mr-2" aria-hidden="true"></i>{{ i18n "backToHome" }}</a></p>
+  </div>
+</section>
+{{ end }}
