@@ -22,20 +22,18 @@
             <div class="flex flex-wrap gap-8 justify-center">
               {{ range $group.skills }}
               <div class="flex flex-col items-center text-center">
-                {{ if .devicon_name }}
-                  {{ $style := .devicon_style | default "original" }}
-                  {{ $defaultInvertOnDark := slice "nextjs" "github" "ollama" "keras" "prisma" }}
-                  {{ $invertOnDark := or (.invert_on_dark) (in $defaultInvertOnDark .devicon_name) }}
+                {{ if .icon_src }}
+                  {{/* Self-hosted icon (site/static/images/icons). The theme loaded devicons
+                       from a CDN via JS, and the deploy path fixer corrupted that URL. */}}
+                  {{ $invertOnDark := or (.invert_on_dark) (eq .name "GitHub") }}
                   <div class="h-16 flex items-center justify-center mb-1">
-                    <img alt=""
+                    <img src="{{ .icon_src | relURL }}"
+                         alt=""
                          width="64"
                          height="64"
                          loading="lazy"
-                         class="w-16 h-16 box-border rounded-md p-1 dark:bg-white/25 dark:ring-1 dark:ring-white/25 dark:brightness-135 dark:contrast-115 dark:opacity-100 {{ if $invertOnDark }}dark:invert dark:brightness-200{{ end }}"
-                         data-animation="skill-icon"
-                         data-devicon-name="{{ .devicon_name }}"
-                         data-devicon-style="{{ $style }}"
-                         data-fa-icon="{{ .icon }}" />
+                         class="w-16 h-16 box-border rounded-md p-1 dark:bg-white/25 dark:ring-1 dark:ring-white/25 {{ if $invertOnDark }}dark:invert{{ end }}"
+                         data-animation="skill-icon" />
                   </div>
                 {{ else }}
                   <!-- Fallback to FontAwesome with random colors -->

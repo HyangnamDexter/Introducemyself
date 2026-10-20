@@ -13,22 +13,22 @@ technical_groups:
     skills:
       - icon: "python"
         name: "Python"
-        devicon_name: "python"
+        icon_src: "images/icons/python.svg"
 
   - title: "협업·배포"
     icon: "code-branch"
     skills:
       - icon: "git-alt"
         name: "Git"
-        devicon_name: "git"
+        icon_src: "images/icons/git.svg"
       - icon: "github"
         name: "GitHub"
-        devicon_name: "github"
+        icon_src: "images/icons/github.svg"
 
   - title: "웹사이트 제작"
     icon: "globe"
     skills:
       - icon: "layer-group"
         name: "Hugo"
-        devicon_name: "hugo"
+        icon_src: "images/icons/hugo.svg"
 ---
