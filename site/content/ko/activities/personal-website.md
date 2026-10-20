@@ -25,6 +25,10 @@ description: "Hugo 테마로 나를 소개하는 사이트를 만들고, push만
 
 ## 산출물과 결과 {#result}
 
+![폭 1440px 화면에서 본 이 사이트의 첫 화면. 왼쪽에 원형 프로필 사진, 오른쪽에 이름 이승환과 소개 문장, 연락하기·활동 자세히 보기 버튼이 있다.](../../images/activity/site-home-1440.jpg)
+
+*완성한 사이트의 첫 화면 (Chrome, 폭 1440px, 2026-10-20 캡처)*
+
 - **공개 사이트**: <https://hyangnamdexter.github.io/Introducemyself/>. 지금 보고 있는 이 사이트입니다.
 - **저장소**: <https://github.com/HyangnamDexter/Introducemyself>. 설정·템플릿·콘텐츠와 커밋 이력이 있습니다.
 - **자동 배포 기록**: <https://github.com/HyangnamDexter/Introducemyself/actions>. push할 때마다 빌드·배포가 성공하는지 확인했습니다.
