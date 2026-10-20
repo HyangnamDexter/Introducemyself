@@ -7,6 +7,9 @@ title = "이승환"
 defaultContentLanguage = "ko"
 defaultContentLanguageInSubdir = false
 
+# 태그·분류 페이지는 쓰지 않으므로 만들지 않음
+disableKinds = ["taxonomy", "term"]
+
 [languages]
   [languages.ko]
     contentDir = "content/ko"
@@ -56,8 +59,6 @@ defaultContentLanguageInSubdir = false
     label = "GitHub"
     url = "https://github.com/HyangnamDexter"
 
-[taxonomies]
-  tag = "tags"
 
 [markup]
   [markup.goldmark]
