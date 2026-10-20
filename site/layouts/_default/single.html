@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{/* Site override: plain article layout for activity pages with a way back
+     to the home page; the theme version added an empty "related" sidebar. */}}
+<article class="pt-8 pb-12 bg-bg dark:bg-bg">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav aria-label="현재 위치" class="mb-6 text-sm">
+      <a href="{{ .Site.Home.RelPermalink }}" class="underline underline-offset-4 text-text-primary">홈</a>
+      <span aria-hidden="true" class="mx-2 text-text-muted">›</span>
+      <a href="{{ printf "%s#experience" .Site.Home.RelPermalink }}" class="underline underline-offset-4 text-text-primary">활동</a>
+      <span aria-hidden="true" class="mx-2 text-text-muted">›</span>
+      <span aria-current="page" class="text-text-secondary">{{ .Title }}</span>
+    </nav>
+    <h1 class="text-3xl font-bold mb-4 font-heading text-text-primary dark:text-text-primary break-words">{{ .Title }}</h1>
+    {{ with .Description }}<p class="text-lg mb-8 text-text-secondary dark:text-text-secondary">{{ . }}</p>{{ end }}
+    <div class="prose max-w-none prose-lg markdown-content dark:prose-invert prose-gray break-words [&_img]:h-auto [&_img]:max-w-full [&_pre]:overflow-x-auto [&_table]:block [&_table]:overflow-x-auto">
+      {{ .Content }}
+    </div>
+    <p class="mt-12">
+      <a href="{{ printf "%s#experience" .Site.Home.RelPermalink }}" class="inline-flex items-center bg-gradient-primary text-white px-4 py-2 rounded-lg font-semibold button-hover">
+        <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i>활동 목록으로 돌아가기
+      </a>
+    </p>
+  </div>
+</article>
+{{ end }}
