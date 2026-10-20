@@ -1,0 +1,39 @@
+/* Site-level additions on top of the CareerCanvas theme styles */
+
+/* Skip link: hidden until focused with the keyboard */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Visible keyboard focus on every interactive element (light and dark mode) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #f59e0b !important;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+main:focus {
+  outline: none;
+}
+
+/* Keep anchor targets below the fixed 4rem navigation bar */
+section[id],
+h2[id],
+h3[id] {
+  scroll-margin-top: 5rem;
+}

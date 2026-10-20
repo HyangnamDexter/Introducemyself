@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.Language.Lang }}">
 <head>
     <!-- Prevent dark mode flash -->
     <script>
@@ -19,6 +19,8 @@
     {{ end }}
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />    
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}?v={{ now.Unix }}" data-version="{{ now.Unix }}">
+    {{ $site := resources.Get "css/site.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $site.RelPermalink }}">
     <style>
         /* Critical CSS to prevent FOUC */
         body {
@@ -30,11 +32,12 @@
     </style>
 </head>
 <body class="bg-bg dark:bg-bg text-text-primary dark:text-text-primary flex flex-col min-h-screen transition-colors duration-200">
+    <a href="#main" class="skip-link">{{ i18n "skipToContent" }}</a>
 
     {{ partial "nav.html" . }}
     <div class="w-full h-16"></div>
 
-    <main class="flex-grow">
+    <main id="main" class="flex-grow" tabindex="-1">
         {{ block "main" . }}{{ end }}
     </main>
 
