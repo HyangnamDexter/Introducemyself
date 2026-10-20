@@ -40,15 +40,15 @@
           <i class="fas fa-toggle-off hidden dark:block" aria-hidden="true"></i>
         </button>
       </div>
-      <div class="lg:hidden flex items-center space-x-2">
-        <button type="button" class="motion-toggle text-text-primary dark:text-text-primary p-2" aria-pressed="false" data-label-pause="{{ i18n "pauseAnimation" }}" data-label-play="{{ i18n "playAnimation" }}" aria-label="{{ i18n "pauseAnimation" }}" title="{{ i18n "pauseAnimation" }}">
+      <div class="lg:hidden flex items-center space-x-1">
+        <button type="button" class="motion-toggle text-text-primary dark:text-text-primary p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-pressed="false" data-label-pause="{{ i18n "pauseAnimation" }}" data-label-play="{{ i18n "playAnimation" }}" aria-label="{{ i18n "pauseAnimation" }}" title="{{ i18n "pauseAnimation" }}">
           <i class="fas fa-pause" aria-hidden="true"></i>
         </button>
-        <button type="button" id="darkModeToggleMobile" class="text-text-primary dark:text-text-primary p-2" aria-label="{{ i18n "toggleDarkMode" }}" title="{{ i18n "toggleDarkMode" }}">
+        <button type="button" id="darkModeToggleMobile" class="text-text-primary dark:text-text-primary p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-label="{{ i18n "toggleDarkMode" }}" title="{{ i18n "toggleDarkMode" }}">
           <i class="fas fa-toggle-on dark:hidden" aria-hidden="true"></i>
           <i class="fas fa-toggle-off hidden dark:block" aria-hidden="true"></i>
         </button>
-        <button type="button" id="menu-btn" class="text-text-primary dark:text-text-primary p-2" aria-label="{{ i18n "openMenu" }}" aria-expanded="false" aria-controls="mobile-menu">
+        <button type="button" id="menu-btn" class="text-text-primary dark:text-text-primary p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-label="{{ i18n "openMenu" }}" aria-expanded="false" aria-controls="mobile-menu">
           <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
         </button>
       </div>
@@ -73,12 +73,12 @@
       <!-- Mobile Social Media Icons -->
       <div class="flex items-center space-x-6 px-3 py-3 border-t border-border-primary dark:border-border-primary mt-2">
         {{ if .Site.Params.linkedin_url }}
-        <a href="{{ .Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary p-1" aria-label="LinkedIn (새 창)">
+        <a href="{{ .Site.Params.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary p-1 min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-label="LinkedIn (새 창)">
           <i class="fab fa-linkedin-in text-2xl" aria-hidden="true"></i>
         </a>
         {{ end }}
         {{ if .Site.Params.github_url }}
-        <a href="{{ .Site.Params.github_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary p-1" aria-label="GitHub (새 창)">
+        <a href="{{ .Site.Params.github_url }}" target="_blank" rel="noopener noreferrer" class="text-text-primary dark:text-text-primary p-1 min-w-[44px] min-h-[44px] inline-flex items-center justify-center" aria-label="GitHub (새 창)">
           <i class="fab fa-github text-2xl" aria-hidden="true"></i>
         </a>
         {{ end }}
