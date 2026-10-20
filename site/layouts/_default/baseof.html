@@ -17,7 +17,6 @@
     {{ if eq hugo.Environment "production" }}
       {{ $styles = $styles | minify | fingerprint }}
     {{ end }}
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />    
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}?v={{ now.Unix }}" data-version="{{ now.Unix }}">
     {{ $site := resources.Get "css/site.css" | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $site.RelPermalink }}">
@@ -47,19 +46,16 @@
     {{ $gsap := resources.Get "js/gsap-animations.js" }}
     {{ $pexels := resources.Get "js/pexels-background.js" }}
     {{ $colors := resources.Get "js/dynamic-colors.js" }}
-    {{ $deviconFallback := resources.Get "js/devicon-fallback.js" }}
     {{ $motion := resources.Get "js/motion-control.js" | minify | fingerprint }}
     {{ if eq hugo.Environment "production" }}
       {{ $scripts = $scripts | minify | fingerprint }}
       {{ $gsap = $gsap | minify | fingerprint }}
       {{ $pexels = $pexels | minify | fingerprint }}
       {{ $colors = $colors | minify | fingerprint }}
-      {{ $deviconFallback = $deviconFallback | minify | fingerprint }}
     {{ end }}
     {{ partial "pexels-config.html" . }}
     {{ partial "color-config.html" . }}
     <script src="{{ $scripts.RelPermalink }}"></script>
-    <script src="{{ $deviconFallback.RelPermalink }}"></script>
     <script src="{{ $colors.RelPermalink }}"></script>
     <!-- Load GSAP before the theme script so animations are set up on DOMContentLoaded
          and motion-control.js can pause them right after. -->
