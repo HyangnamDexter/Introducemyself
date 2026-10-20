@@ -37,3 +37,19 @@ h2[id],
 h3[id] {
   scroll-margin-top: 5rem;
 }
+
+/* Respect the OS "reduce motion" setting for CSS transitions/animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* Hide the blinking typewriter cursor while motion is paused */
+.motion-paused .typing-cursor {
+  display: none;
+}

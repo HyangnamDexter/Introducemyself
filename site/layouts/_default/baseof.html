@@ -48,6 +48,7 @@
     {{ $pexels := resources.Get "js/pexels-background.js" }}
     {{ $colors := resources.Get "js/dynamic-colors.js" }}
     {{ $deviconFallback := resources.Get "js/devicon-fallback.js" }}
+    {{ $motion := resources.Get "js/motion-control.js" | minify | fingerprint }}
     {{ if eq hugo.Environment "production" }}
       {{ $scripts = $scripts | minify | fingerprint }}
       {{ $gsap = $gsap | minify | fingerprint }}
@@ -60,7 +61,11 @@
     <script src="{{ $scripts.RelPermalink }}"></script>
     <script src="{{ $deviconFallback.RelPermalink }}"></script>
     <script src="{{ $colors.RelPermalink }}"></script>
+    <!-- Load GSAP before the theme script so animations are set up on DOMContentLoaded
+         and motion-control.js can pause them right after. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="{{ $gsap.RelPermalink }}"></script>
+    <script src="{{ $motion.RelPermalink }}"></script>
     <script src="{{ $pexels.RelPermalink }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/fslightbox/index.js"></script>
 
