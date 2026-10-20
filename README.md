@@ -13,7 +13,8 @@ Hugo 테마 **CareerCanvas**로 만든 개인 소개(포트폴리오) 사이트�
 3. [로컬에서 설치·빌드·미리보기](#로컬에서-설치빌드미리보기)
 4. [내용 수정 위치](#내용-수정-위치)
 5. [수정 후 재배포와 확인 방법](#수정-후-재배포와-확인-방법)
-6. [출처와 이용 조건](#출처와-이용-조건)
+6. [공개 사이트 자동 점검](#공개-사이트-자동-점검)
+7. [출처와 이용 조건](#출처와-이용-조건)
 
 ## 폴더 구조
 
@@ -31,6 +32,8 @@ Hugo 테마 **CareerCanvas**로 만든 개인 소개(포트폴리오) 사이트�
 | `site/package.json`, `site/package-lock.json` | Tailwind CSS·PostCSS 빌드 도구 버전 |
 | `site/postcss.config.js`, `site/tailwind.config.js` | 테마 CSS(Tailwind) 빌드 설정 |
 | `.github/workflows/hugo-pages.yml` | GitHub Actions 배포 워크플로 |
+| `tools/verify_site.py`, `tools/a11y_check.py` | 공개 사이트 자동 점검 스크립트 |
+| `docs/verification/` | 점검 결과(화면 캡처, 로그, 접근성 검사 결과) |
 | `.github/pages_build.py` | 워크플로가 실행하는 의존성 설치·빌드 스크립트(수업 제공) |
 | 저장소 루트의 `assets/`, `layouts/`, `theme.toml`, `LICENSE` 등 | 내려받은 테마 ZIP 원본(준비 스크립트 입력, 테마 라이선스 보존) |
 
@@ -102,6 +105,19 @@ hugo --gc --minify --config hugo.toml,pages.json --theme template --themesDir th
 4. 1~2분 뒤 공개 사이트를 새로고침(캐시 무시: `Ctrl+F5`)해서 변경 내용이 반영됐는지 확인합니다.
 
 처음 한 번은 저장소 **Settings → Pages → Build and deployment → Source**를 `GitHub Actions`로 설정해야 합니다.
+
+## 공개 사이트 자동 점검
+
+배포 후 공개 사이트를 실제 브라우저로 점검하는 스크립트입니다. 설치된 Google Chrome을 사용하므로 브라우저를 따로 내려받지 않습니다. 저장소 루트에서 실행합니다.
+
+```bash
+pip install playwright
+python tools/verify_site.py docs/verification
+python tools/a11y_check.py > docs/verification/axe_result.json
+```
+
+- `verify_site.py`: 폭 1440·768·390px 화면, 모바일 메뉴, 메뉴 앵커와 뒤로 가기, 직접 URL 접근과 새로고침, 키보드(Tab·Enter·Escape), 소개 팝업 초점, 애니메이션 멈춤, 200% 확대에 해당하는 폭, 404 페이지, 콘솔·네트워크 오류를 확인하고 화면을 `docs/verification/fig*.png`로 저장합니다. 결과는 `verify_log.json`에 남습니다.
+- `a11y_check.py`: axe-core 4.10.2로 다크·라이트 모드에서 WCAG 2 A/AA 규칙을 검사합니다.
 
 ## 출처와 이용 조건
 
