@@ -53,3 +53,9 @@ h3[id] {
 .motion-paused .typing-cursor {
   display: none;
 }
+
+/* Sections are visible without waiting for the scroll observer, so the
+   content is readable in full-page captures, print and when JS fails. */
+section[data-animate] {
+  opacity: 1;
+}
