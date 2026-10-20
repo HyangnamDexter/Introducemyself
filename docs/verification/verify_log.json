@@ -1,11 +1,11 @@
 {
  "browser": "Chrome 155.0.8059.82",
- "t1440_time": "2026-10-20 12:39:49 KST",
+ "t1440_time": "2026-10-20 12:45:31 KST",
  "d1440": {
   "overflow": false,
   "stylesheets": [
    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
-   "https://hyangnamdexter.github.io/Introducemyself/css/main.min.4eb03fac9537101aa26baea896193e812cd1233bf0ef7106fdc7340141f9e7b4.css?v=1792467467",
+   "https://hyangnamdexter.github.io/Introducemyself/css/main.min.42b5341dc1b0f83c72d943eea9b00790d76bef57602acc5f4592e8c4d4ad0051.css?v=1792467872",
    "https://hyangnamdexter.github.io/Introducemyself/css/site.min.a2f4167ad9a0c23564743ec565986db4a15c26f7091db5575660bde4efc209e4.css"
   ],
   "bodyFont": "\"nunito sans\", sans-serif",
@@ -135,9 +135,9 @@
  "enter_about": "https://hyangnamdexter.github.io/Introducemyself/#about",
  "t768": {
   "overflow": false,
-  "time": "2026-10-20 12:40:07 KST"
+  "time": "2026-10-20 12:45:48 KST"
  },
- "t390_time": "2026-10-20 12:40:12 KST",
+ "t390_time": "2026-10-20 12:45:53 KST",
  "m390": {
   "overflow": false,
   "menu_expanded": "true",
@@ -229,5 +229,5 @@
   "h1": "404"
  },
  "errors_direct": [],
- "finished": "2026-10-20 12:40:33 KST"
+ "finished": "2026-10-20 12:46:15 KST"
 }

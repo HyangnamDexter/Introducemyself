@@ -8,7 +8,7 @@
   ],
   "mode": "dark",
   "url": "/",
-  "primary": "#374151"
+  "primary": "#474A51"
  },
  {
   "violations": [],
@@ -23,24 +23,13 @@
  },
  {
   "violations": [],
-  "passes": 20,
+  "passes": 21,
   "incomplete": [
    "color-contrast"
   ],
   "mode": "dark",
   "url": "/activities/personal-website/",
-  "primary": "#474A51"
- },
- {
-  "violations": [],
-  "passes": 22,
-  "incomplete": [
-   "aria-valid-attr-value",
-   "color-contrast"
-  ],
-  "mode": "light",
-  "url": "/",
-  "primary": "#474A51"
+  "primary": "#1E40AF"
  },
  {
   "violations": [],
@@ -55,7 +44,18 @@
  },
  {
   "violations": [],
-  "passes": 20,
+  "passes": 22,
+  "incomplete": [
+   "aria-valid-attr-value",
+   "color-contrast"
+  ],
+  "mode": "light",
+  "url": "/",
+  "primary": "#374151"
+ },
+ {
+  "violations": [],
+  "passes": 21,
   "incomplete": [
    "color-contrast"
   ],
