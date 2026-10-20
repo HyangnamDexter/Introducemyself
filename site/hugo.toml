@@ -2,7 +2,7 @@
 # 개인 정보 항목은 "내 정보" 표시가 있는 곳만 수정하면 됩니다.
 
 baseURL = "https://hyangnamdexter.github.io/Introducemyself/"
-title = ""
+title = "이승환"
 
 defaultContentLanguage = "ko"
 defaultContentLanguageInSubdir = false
@@ -15,11 +15,11 @@ defaultContentLanguageInSubdir = false
     weight = 1
     [languages.ko.params]
       # 내 정보: 이름 아래 번갈아 나오는 문장 (마침표+공백으로 구분)
-      tagline = ""
+      tagline = "네트워크에 관심 있는 학생입니다. nextlab에서 Intent Caching을 연구합니다."
       # 내 정보: 상단 짧은 소개
-      hero_description = ""
+      hero_description = "안녕하세요. 전북대학교 nextlab에서 Intent Caching에 대해 연구하고 있는 학생입니다."
       # 내 정보: 지역 (비우면 표시하지 않음)
-      hero_location = ""
+      hero_location = "화성, 경기도"
       collab_tags = []
 
 [build]
@@ -27,25 +27,34 @@ defaultContentLanguageInSubdir = false
 
 [params]
   # 내 정보: 이름
-  name = ""
-  firstName = ""
+  name = "이승환"
+  # 이름 아래에 작게 표시하는 영문 이름
+  name_en = "Seunghwan Lee"
+  firstName = "이승환"
   lastName = ""
   # 내 정보: 공개 이메일 (비우면 표시하지 않음)
-  email = ""
+  email = "a031122@jbnu.ac.kr"
   # 내 정보: site/static/images/ 아래 파일 (앞에 / 를 붙이지 않음)
-  profile_image = ""
-  author = ""
-  description = ""
+  profile_image = "images/profile.jpg"
+  profile_alt = "식당에서 휴대폰을 보고 있는 이승환"
+  author = "이승환"
+  description = "전북대학교 IT지능정보공학과 이승환의 개인 소개 사이트"
   linkedin_url = ""
   linkedin_text = ""
-  github_url = ""
-  github_text = ""
+  github_url = "https://github.com/HyangnamDexter"
+  github_text = "github.com/HyangnamDexter"
   calendly_url = ""
   resume_url = ""
   copyright = ""
   formspreeendpoint = ""
   pexelsapikey = ""
-  social = []
+  # 상단 "활동 자세히 보기" 버튼이 여는 대표 활동 페이지
+  activity_url = "activities/personal-website/"
+
+  [[params.social]]
+    icon = "github"
+    label = "GitHub"
+    url = "https://github.com/HyangnamDexter"
 
 [taxonomies]
   tag = "tags"
