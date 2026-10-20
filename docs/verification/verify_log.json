@@ -1,0 +1,233 @@
+{
+ "browser": "Chrome 155.0.8059.82",
+ "t1440_time": "2026-10-20 12:39:49 KST",
+ "d1440": {
+  "overflow": false,
+  "stylesheets": [
+   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+   "https://hyangnamdexter.github.io/Introducemyself/css/main.min.4eb03fac9537101aa26baea896193e812cd1233bf0ef7106fdc7340141f9e7b4.css?v=1792467467",
+   "https://hyangnamdexter.github.io/Introducemyself/css/site.min.a2f4167ad9a0c23564743ec565986db4a15c26f7091db5575660bde4efc209e4.css"
+  ],
+  "bodyFont": "\"nunito sans\", sans-serif",
+  "navVisible": true
+ },
+ "menu_activity": {
+  "url": "https://hyangnamdexter.github.io/Introducemyself/#experience",
+  "sectionTop": 80
+ },
+ "back": {
+  "after_contact": "https://hyangnamdexter.github.io/Introducemyself/#contact",
+  "after_back": "https://hyangnamdexter.github.io/Introducemyself/#experience",
+  "experienceTop": 80
+ },
+ "images": [
+  [
+   "/Introducemyself/images/profile.jpg",
+   true,
+   "식당에서 휴대폰을 보고 있는 이승환"
+  ],
+  [
+   "/Introducemyself/images/icons/python.svg",
+   true,
+   ""
+  ],
+  [
+   "/Introducemyself/images/icons/git.svg",
+   true,
+   ""
+  ],
+  [
+   "/Introducemyself/images/icons/github.svg",
+   true,
+   ""
+  ],
+  [
+   "/Introducemyself/images/icons/hugo.svg",
+   true,
+   ""
+  ]
+ ],
+ "fa_loaded": true,
+ "motion": {
+  "pressed": "true",
+  "paused": true,
+  "tagline": "네트워크에 관심 있는 학생입니다. nextlab에서 Intent Caching을 연구합니다."
+ },
+ "modal_open_focus": "closeAboutModal",
+ "modal_tab_inside": true,
+ "modal_after_escape": {
+  "hidden": true,
+  "focus": "aboutModalBtn"
+ },
+ "errors_1440": [],
+ "tab_sequence": [
+  [
+   "본문으로 바로가기",
+   "solid",
+   "3px"
+  ],
+  [
+   "이승환",
+   "solid",
+   "3px"
+  ],
+  [
+   "소개",
+   "solid",
+   "3px"
+  ],
+  [
+   "역량",
+   "solid",
+   "3px"
+  ],
+  [
+   "활동",
+   "solid",
+   "3px"
+  ],
+  [
+   "기술",
+   "solid",
+   "3px"
+  ],
+  [
+   "연락처",
+   "solid",
+   "3px"
+  ],
+  [
+   "GitHub (새 창)",
+   "solid",
+   "3px"
+  ],
+  [
+   "움직임 멈추기",
+   "solid",
+   "3px"
+  ],
+  [
+   "다크 모드 전환",
+   "solid",
+   "3px"
+  ],
+  [
+   "연락하기",
+   "solid",
+   "3px"
+  ],
+  [
+   "활동 자세히 보기",
+   "solid",
+   "3px"
+  ],
+  [
+   "GitHub (새 창)",
+   "solid",
+   "3px"
+  ],
+  [
+   "더 보기",
+   "solid",
+   "3px"
+  ]
+ ],
+ "enter_about": "https://hyangnamdexter.github.io/Introducemyself/#about",
+ "t768": {
+  "overflow": false,
+  "time": "2026-10-20 12:40:07 KST"
+ },
+ "t390_time": "2026-10-20 12:40:12 KST",
+ "m390": {
+  "overflow": false,
+  "menu_expanded": "true",
+  "targets": [
+   [
+    "움직임 멈추기",
+    44,
+    44
+   ],
+   [
+    "다크 모드 전환",
+    44,
+    44
+   ],
+   [
+    "메뉴 열기",
+    44,
+    48
+   ],
+   [
+    "소개",
+    374,
+    48
+   ],
+   [
+    "역량",
+    374,
+    48
+   ],
+   [
+    "활동",
+    374,
+    48
+   ],
+   [
+    "기술",
+    374,
+    48
+   ],
+   [
+    "연락처",
+    374,
+    48
+   ],
+   [
+    "GitHub (새 창)",
+    44,
+    44
+   ]
+  ],
+  "after_tap": {
+   "url": "https://hyangnamdexter.github.io/Introducemyself/#experience",
+   "menuHidden": true,
+   "sectionTop": 80
+  }
+ },
+ "errors_390": [],
+ "resize": {
+  "desktopMenuVisible": true,
+  "mobileMenuVisible": false,
+  "heroVisible": true,
+  "overflow": false
+ },
+ "zoom200": {
+  "overflow": false,
+  "url": "https://hyangnamdexter.github.io/Introducemyself/#about"
+ },
+ "direct_activity": {
+  "status": 200,
+  "h1": "개인 소개 웹사이트 구축",
+  "h2": [
+   "기간과 진행 상태",
+   "활동 목적",
+   "내 역할",
+   "수행 과정과 선택 이유",
+   "산출물과 결과",
+   "배운 점과 한계, 다음 개선 방향"
+  ]
+ },
+ "reload_activity": "개인 소개 웹사이트 구축",
+ "back_link": "https://hyangnamdexter.github.io/Introducemyself/#experience",
+ "direct_anchor": {
+  "status": 200,
+  "top": 80
+ },
+ "reload_anchor_top": 80,
+ "404": {
+  "status": 404,
+  "h1": "404"
+ },
+ "errors_direct": [],
+ "finished": "2026-10-20 12:40:33 KST"
+}

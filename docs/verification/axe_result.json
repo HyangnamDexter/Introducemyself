@@ -1,0 +1,66 @@
+[
+ {
+  "violations": [],
+  "passes": 22,
+  "incomplete": [
+   "aria-valid-attr-value",
+   "color-contrast"
+  ],
+  "mode": "dark",
+  "url": "/",
+  "primary": "#374151"
+ },
+ {
+  "violations": [],
+  "passes": 22,
+  "incomplete": [
+   "aria-valid-attr-value",
+   "color-contrast"
+  ],
+  "mode": "dark",
+  "url": "/",
+  "primary": "#474A51"
+ },
+ {
+  "violations": [],
+  "passes": 20,
+  "incomplete": [
+   "color-contrast"
+  ],
+  "mode": "dark",
+  "url": "/activities/personal-website/",
+  "primary": "#474A51"
+ },
+ {
+  "violations": [],
+  "passes": 22,
+  "incomplete": [
+   "aria-valid-attr-value",
+   "color-contrast"
+  ],
+  "mode": "light",
+  "url": "/",
+  "primary": "#474A51"
+ },
+ {
+  "violations": [],
+  "passes": 22,
+  "incomplete": [
+   "aria-valid-attr-value",
+   "color-contrast"
+  ],
+  "mode": "light",
+  "url": "/",
+  "primary": "#374151"
+ },
+ {
+  "violations": [],
+  "passes": 20,
+  "incomplete": [
+   "color-contrast"
+  ],
+  "mode": "light",
+  "url": "/activities/personal-website/",
+  "primary": "#1E40AF"
+ }
+]
