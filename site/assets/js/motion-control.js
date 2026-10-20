@@ -12,10 +12,13 @@
   }
 
   // Show the final, readable state of everything the entrance animation hides.
+  // Inline styles are written directly: gsap.set() does not render while the
+  // global timeline is paused, which left these elements at opacity 0.
   function showStaticContent() {
-    if (window.gsap) {
-      gsap.set('[data-animation], .quick-fact-card', { opacity: 1, y: 0, scale: 1 });
-    }
+    document.querySelectorAll('[data-animation], .quick-fact-card').forEach(function (el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
     document.querySelectorAll('.typewriter').forEach(function (el) {
       el.textContent = el.getAttribute('data-original-text') || el.textContent;
       el.style.color = 'inherit';
