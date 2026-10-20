@@ -42,13 +42,9 @@ disableKinds = ["taxonomy", "term"]
   profile_alt = "식당에서 휴대폰을 보고 있는 이승환"
   author = "이승환"
   description = "전북대학교 IT지능정보공학과 이승환의 개인 소개 사이트"
-  linkedin_url = ""
-  linkedin_text = ""
   github_url = "https://github.com/HyangnamDexter"
   github_text = "github.com/HyangnamDexter"
-  calendly_url = ""
-  resume_url = ""
-  copyright = ""
+  # 테마 스크립트가 읽는 값. 비워 두면 문의 폼·Pexels 사진을 쓰지 않음
   formspreeendpoint = ""
   pexelsapikey = ""
   # 상단 "활동 자세히 보기" 버튼이 여는 대표 활동 페이지
