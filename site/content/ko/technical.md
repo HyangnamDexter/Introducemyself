@@ -1,6 +1,9 @@
 ---
 title: "기술"
 type: "homepage"
+build:
+  render: never
+  list: never
 intro: >-
   실제로 사용해 본 언어와 도구입니다.
 

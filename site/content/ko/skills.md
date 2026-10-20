@@ -1,6 +1,9 @@
 ---
 title: "역량"
 type: "homepage"
+build:
+  render: never
+  list: never
 intro: >-
   지금 배우고 있는 분야와, 실제로 써 본 도구를 정리했습니다.
 

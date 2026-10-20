@@ -1,6 +1,9 @@
 ---
 title: "활동"
 type: "homepage"
+build:
+  render: never
+  list: never
 intro: >-
   직접 수행한 대표 활동입니다. 자세한 과정과 결과는 상세 페이지에 정리했습니다.
 
