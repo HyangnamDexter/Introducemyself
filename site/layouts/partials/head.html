@@ -28,9 +28,9 @@
 <meta name="twitter:image" content="{{ with .Params.og_image }}{{ . | absURL }}{{ else }}{{ with site.Params.og_image }}{{ . | absURL }}{{ end }}{{ end }}" />
 
 <!-- 🔧 Favicon -->
-{{/* No favicon file: an empty data URI stops browsers requesting /favicon.ico
-     from the domain root, which is outside this project site. */}}
-<link rel="icon" href="data:," />
+{{/* Favicon inside the project path; without an explicit icon browsers
+     request /favicon.ico from the domain root, outside this project site. */}}
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}" />
 
 <!-- Fonts & Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
