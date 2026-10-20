@@ -59,3 +59,9 @@ h3[id] {
 section[data-animate] {
   opacity: 1;
 }
+
+/* Tailwind typography wraps inline code in literal backticks; hide them */
+.prose code::before,
+.prose code::after {
+  content: none;
+}
