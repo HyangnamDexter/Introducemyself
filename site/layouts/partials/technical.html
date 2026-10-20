@@ -27,7 +27,7 @@
                   {{ $defaultInvertOnDark := slice "nextjs" "github" "ollama" "keras" "prisma" }}
                   {{ $invertOnDark := or (.invert_on_dark) (in $defaultInvertOnDark .devicon_name) }}
                   <div class="h-16 flex items-center justify-center mb-1">
-                    <img alt="{{ .name }}"
+                    <img alt=""
                          width="64"
                          height="64"
                          loading="lazy"
