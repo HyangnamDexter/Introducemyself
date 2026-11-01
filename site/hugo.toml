@@ -22,7 +22,7 @@ disableKinds = ["taxonomy", "term"]
       # 내 정보: 상단 짧은 소개
       hero_description = "안녕하세요. 전북대학교 nextlab에서 Intent Caching에 대해 연구하고 있는 학생입니다."
       # 내 정보: 지역 (비우면 표시하지 않음)
-      hero_location = "화성, 경기도"
+      hero_location = "전주, 전북특별자치도"
       collab_tags = []
 
 [build]
