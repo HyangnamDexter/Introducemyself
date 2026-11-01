@@ -27,12 +27,6 @@
           <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="text-primary dark:text-white break-all"><span class="sr-only">LinkedIn: </span>{{ $.Site.Params.linkedin_text | default . }}</a>
         </li>
         {{ end }}
-        {{ with .Site.Params.hero_location }}
-        <li class="flex items-center gap-3">
-          <span class="contact-info-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></span>
-          <span class="text-gray-700 dark:text-text-tertiary"><span class="sr-only">지역: </span>{{ . }}</span>
-        </li>
-        {{ end }}
       </ul>
     </div>
   </div>
