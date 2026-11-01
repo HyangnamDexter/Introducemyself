@@ -22,7 +22,7 @@ positions:
     role: "개인 활동 · 기획부터 배포까지 직접 수행"
     period: "2026년 10월 ~ 11월"
     industry: "초급프로젝트 과제 1"
-    company_description: "나를 소개하는 공개 웹사이트를 만들고, push만으로 자동 배포되는 구조를 직접 구성해 보는 것이 목표입니다."
+    company_description: "나를 소개하는 공개 웹사이트를 만들고, main 브랜치에 push하면 GitHub Actions가 자동으로 빌드·배포하도록 구성했습니다."
     detail_url: "activities/personal-website/"
     bullet_points:
       - "Hugo 테마 CareerCanvas를 고르고 수업 준비 스크립트로 GitHub Actions 배포를 구성"
