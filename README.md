@@ -131,6 +131,9 @@ python tools/a11y_check.py > docs/verification/axe_result.json
 | Devicon v2.16.0 SVG (Python, Git, GitHub, Hugo) | `site/static/images/icons/` (저장소에 포함) | 외부 자료 | <https://devicon.dev> | MIT License |
 | GSAP 3.13.0 | 애니메이션(cdnjs) | 외부 자료 | <https://gsap.com> | GSAP Standard License (무료 사용) |
 | Montserrat, Nunito Sans | 웹폰트(Google Fonts) | 외부 자료 | <https://fonts.google.com> | SIL Open Font License 1.1 |
-| 준비 스크립트 | `prepare_github_pages.py`, `.github/pages_build.py`, 워크플로 | 수업 제공 | 초급프로젝트 수업 | 수업 자료 |
-| 사이트 전용 템플릿 수정, `site.css`, `motion-control.js`, `i18n/ko.toml`, 이 README | `site/layouts/`, `site/assets/`, `site/i18n/` | 직접 작성 (AI 도움) | Claude Code(Anthropic)로 작성한 뒤 직접 검토·빌드·브라우저 확인 | 본 저장소 |
-| 소개·활동 글 | `site/content/ko/` | 직접 작성 | 본인 | 본인 저작물 |
+| 준비 스크립트 | `prepare_github_pages.py`, `.github/pages_build.py`, 워크플로 | 수업 제공 (워크플로는 러너 버전만 `ubuntu-24.04`로 수정) | 초급프로젝트 수업 | 수업 자료 |
+| 사이트 전용 템플릿 수정, `site.css`, `motion-control.js`, `i18n/ko.toml`, 이 README | `site/layouts/`, `site/assets/`, `site/i18n/` | AI 생성 후 본인 확인 | Claude Code(Anthropic, Claude Opus 5.5)로 생성한 뒤 직접 검토·빌드·브라우저 확인 | 본 저장소 |
+| 공개 사이트 점검 스크립트 | `tools/verify_site.py`, `tools/a11y_check.py` | AI 생성 후 본인 확인 | Claude Code(Anthropic, Claude Opus 5.5) | 본 저장소 |
+| 사이트 화면 캡처 | `site/static/images/activity/site-home-1440.jpg`(활동 페이지), `docs/verification/*.png`(점검 결과) | AI 촬영 | Claude Code(Playwright, Chrome)로 본인 사이트를 캡처 | 본 저장소 |
+| 소개·활동 글 | `site/content/ko/` | 직접 작성 (Intent Caching 연구 페이지는 틀만 AI 제공, 본문 직접 작성) | 본인 | 본인 저작물 |
+| 프로필 사진 | `site/static/images/profile.jpg` | 본인 사진 | 본인 | 본인 저작물 (위치 정보(EXIF) 제거, 640px로 축소) |
